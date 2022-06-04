@@ -59,17 +59,34 @@ main{
 }
 
 .message-box{
-    max-width: 90%;
+    width: 100%;
+}
+
+.user-visibility{
+    direction: rtl;
+}
+
+.message-box:not(:first-child){
+    margin-top: 25px;
 }
 
 .message{
-    background: #78A5A3;
+    max-width: 90%;
+    display: inline-block;
+    word-wrap: break-word;
     font-size: 26px;
     padding: 10px;
 }
 
+.user-color{
+    background: #628685;
+}
+
+.companion-color{
+    background: #78A5A3;
+}
 .sender{
-    margin: 10px 0 0 10px;
+    margin: 5px 0 0 10px;
     font-size: 20px;
 }
 

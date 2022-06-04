@@ -1,5 +1,11 @@
 export default (state, action) => {
     switch(action.type) {
+        case "SET_DATA":
+            return {
+                ...state,
+                users: action.payload.users,
+                messages: action.payload.messages,
+            }
         case "JOIN":
             return {
                 ...state,
@@ -15,7 +21,7 @@ export default (state, action) => {
         case "SET_MESSAGES":
             return{
                 ...state,
-                messages: action.payload,
+                messages: [...state.messages, action.payload],
             }
         default:
             return state;

@@ -12,7 +12,7 @@ function App() {
     roomId: null,
     userName: null,
     users: [],
-    message: [],
+    messages: [],
   });
 
   const onLogin = async (dataObj) => {
@@ -24,25 +24,36 @@ function App() {
     socket.emit("ROOM:JOIN", dataObj)
 
     const { data } = await axios.get(`/rooms/${dataObj.roomId}`)
-    dispatchUsers(data.users)
+
+    dispatch({
+      type: "SET_DATA",
+      payload: data
+    })
   }
 
-  const dispatchUsers = users => {
+  const dispatchUsers = (users) => {
     dispatch({
       type: "SET_USERS",
       payload: users,
     })
   }
 
+  const dispatchMessage = (message) => {
+    dispatch({
+      type: "SET_MESSAGES",
+      payload: message,
+    })
+  }
   React.useEffect(() => {
     socket.on("ROOM:SET_USERS", dispatchUsers)
+    socket.on("ROOM:SET_MESSAGES", dispatchMessage)
   }, [])
   return (
     <>
       {
         !state.isJoined 
         ? <Entry onLogin = {onLogin}/>
-        : <Chat {...state}/>
+        : <Chat {...state} addMessage = {dispatchMessage}/>
       }
     </>
   );

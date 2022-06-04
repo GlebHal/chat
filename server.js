@@ -36,7 +36,6 @@ app.post("/rooms", (req, res) => {
       ]))
     }
 
-    console.log(rooms)
     res.send()
 })
 
@@ -55,6 +54,11 @@ io.on("connection", (socket) => {
         socket.to(roomId).emit("ROOM:SET_USERS", users)
       }
     })
+  })
+
+  socket.on("ROOM:SEND_MESSAGE", ({ roomId, messageObj }) => {
+    rooms.get(roomId).get("messages").push(messageObj)
+    socket.to(roomId).emit("ROOM:SET_MESSAGES", messageObj);
   })
   console.log("User connected", socket.id)
 })
