@@ -1,0 +1,77 @@
+.entry-wrapper{
+    color: white;
+    background: linear-gradient(to bottom right, #6C94AA, #416173);
+   height: 100%;
+   min-height: 100%;
+   width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   
+   div:first-child{
+       height: 30%;
+   }
+   input{
+       padding: 0.5em 0.8em;
+       margin-top: 10px;
+       font-size: 22px;
+       width: 300px;
+       border-collapse: none;;
+   }
+}
+
+.welcome-title{
+    animation-name: welcome-animation;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(.54,0,1,1);
+    font-size: 70px;
+    font-weight: 500;
+}
+.entry-form-wrapper{
+    animation-name: opacity;
+    animation-duration: 1s;
+    animation-delay: 1.5s;
+    animation-fill-mode: forwards;
+    opacity: 0%;
+    display: grid;
+    justify-content: center;
+}
+
+.entry-button{
+    margin-top: 20px;
+    color: white;
+    background: #9b4f0f;
+    cursor: pointer;
+    font-size: 22px;
+    padding: 0.5em 1em;
+    border:none;
+}
+@keyframes opacity{
+    0%{
+        opacity: 0%;
+    }
+    100%{
+        opacity: 100%;
+    }
+}
+@keyframes welcome-animation{
+    0%{
+        opacity: 0%;
+    }
+    50%{
+        opacity: 100%;
+        font-size: 70px;
+    }
+    100%{
+        position: relative;
+        font-size: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+
+
+
